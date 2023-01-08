@@ -52,7 +52,7 @@ cat.name = catName.value;
 cat.breed = catBreed.value;
 
 const catGender = document.querySelectorAll('input[name="sex"]'); 
-for (let i=0; i<catGender.length; i++) {  //сделала метод не по заданию, потому что хз как из радиокнопки иначе значение брать
+for (let i=0; i<catGender.length; i++) {  
 function getGender () {
     if (catGender[i].checked) {
         const gotGender = catGender[i].value;
@@ -124,4 +124,116 @@ division.onclick = function() {
     let b = Number(number2.value);
     console.log(Calc.division(a, b));
 }
+
+// 4. Реализуйте класс `Валидатор`, который будет проверять строки. К примеру, у него 
+// будет метод `isEmail`, который параметром принимает строку и проверяет, является ли она 
+// корректным емейлом или нет. Если является - возвращает true, если не является - то false. 
+// Кроме того, класс будет иметь следующие методы: метод `isDomain` для проверки домена, метод 
+// `isDate` для проверки даты и метод `isPhone` для проверки телефона.
+    
+//     Сделайте 2 версии этого класса - стандартную и статическую.
+
+const mail = document.querySelector("#mail").value;
+const domain = document.querySelector("#domain").value;
+const date = document.querySelector("#date").value;
+const phone = document.querySelector("#phone").value;
+
+
+class ValidatorStatic {
+    static isEmail () {
+        let emailChecked = false;
+        if (mail.match(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i) == true) {
+            emailChecked = true;
+        }
+        return emailChecked;
+        
+    }
+
+    static isDomain () {
+        let domainChecked = false;
+        if (domain.match(/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/) == true) {
+            domainChecked = true;
+        }
+        return domainChecked;
+    }
+
+    static isDate () {
+        let dateChecked = false;
+        if (date.match(/^(0[1-9]|1[0-2])\s\s([0-9]{4})$/) == true) {
+            dateChecked = true;
+        }
+        return dateChecked;
+        
+    }
+
+    static isPhone () {
+        let phoneChecked = false;
+        if (phone.match(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/) == true) {
+            phoneChecked = true;
+        }
+        return phoneChecked;
+        
+    }
+}
+
+
+//NOT STATIC
+
+class Validator {
+    constructor(mail, domain, date, phone) {
+        this.mail = mail;
+        this.domain = domain;
+        this.date = date;
+        this.phone = phone;
+    }
+
+    isEmail (mail) {
+        let emailChecked = false;
+        if (mail.match(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i) == true) {
+            emailChecked = true;
+        }
+        return emailChecked;
+    }
+
+    isDomain () {
+        let domainChecked = false;
+        if (domain.match(/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/) == true) {
+            domainChecked = true;
+        }
+        return domainChecked;
+    }
+
+        isDate () {
+        let dateChecked = false;
+        if (date.match(/^(0[1-9]|1[0-2])\s\s([0-9]{4})$/) == true) {
+            dateChecked = true;
+        }
+        return dateChecked;
+        
+    }
+
+    isPhone () {
+        let phoneChecked = false;
+        if (phone.match(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/) == true) {
+            phoneChecked = true;
+        }
+        return phoneChecked;
+        
+    }
+}
+
+
+
+// function checkMail () {
+//     const abcd = "info@speakfrench.ru";
+// if (abcd.match(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i)) {
+//     console.log("It works!");
+// }
+// else {
+//     console.log("doesn't work");
+// }
+// }
+
+// checkMail();
+
 
