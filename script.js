@@ -18,7 +18,7 @@ class Worker {
     }
 }
 
-var worker = new Worker('Иван', 'Иванов', 10, 31);
+const worker = new Worker('Иван', 'Иванов', 10, 31);
 
 console.log(worker.name);
 console.log(worker.surname);
@@ -36,6 +36,7 @@ console.log(worker.getSalary());
 const catName = document.querySelector("#catname");
 const catBreed = document.querySelector("#catbreed");
 const saveCat = document.querySelector("#savecat");
+const catGender = document.querySelectorAll('input[type=radio][name="sex"]'); 
 
 class Cat {
     constructor (name, breed, gender) {
@@ -45,25 +46,30 @@ class Cat {
     }
 }
 
-let cat = {};
+let cat = new Cat ();
+
+
+catGender.forEach(radio => radio.addEventListener('change', () => 
+{const gender = radio.value;
+cat.gender = gender;
+return gender} ));
+
+// catGender.addEventListener('click',(event)=>{
+//     if(catGender.value > 0){
+//         const gender = catGender.value;
+//         cat.gender = gender;
+//     }
+//     console.log(cat.gender);
+//     })
 
 saveCat.onclick = function () {
 cat.name = catName.value;
 cat.breed = catBreed.value;
 
-const catGender = document.querySelectorAll('input[name="sex"]'); 
-for (let i=0; i<catGender.length; i++) {  
-function getGender () {
-    if (catGender[i].checked) {
-        const gotGender = catGender[i].value;
-        return gotGender
-    }
-}}
-const fuckingGender = getGender();
-cat.gender = fuckingGender;
 
 console.log(cat);
 }
+
     
 
 // Создайте класс Калькулятор, который будет содержать 4 статических метода - 
