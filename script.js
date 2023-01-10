@@ -51,8 +51,7 @@ let cat = new Cat ();
 
 catGender.forEach(radio => radio.addEventListener('change', () => 
 {const gender = radio.value;
-cat.gender = gender;
-return gender} ));
+cat.gender = gender;} ));
 
 saveCat.onclick = function () {
 cat.name = catName.value;
