@@ -54,14 +54,6 @@ catGender.forEach(radio => radio.addEventListener('change', () =>
 cat.gender = gender;
 return gender} ));
 
-// catGender.addEventListener('click',(event)=>{
-//     if(catGender.value > 0){
-//         const gender = catGender.value;
-//         cat.gender = gender;
-//     }
-//     console.log(cat.gender);
-//     })
-
 saveCat.onclick = function () {
 cat.name = catName.value;
 cat.breed = catBreed.value;
